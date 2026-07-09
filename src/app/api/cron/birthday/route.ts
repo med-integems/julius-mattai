@@ -16,17 +16,17 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Unauthorized access" }, { status: 401 });
     }
 
-    // 2. Date Verification (July 22nd)
+    // 2. Date Verification (July 21st)
     // We get the current date. For local testing, we can pass a query param ?bypassDate=true
     const { searchParams } = new URL(request.url);
     const bypassDate = searchParams.get("bypassDate") === "true";
     
     const today = new Date();
-    const isJuly22 = today.getMonth() === 6 && today.getDate() === 22; // Month is 0-indexed (6 = July)
+    const isJuly21 = today.getMonth() === 6 && today.getDate() === 21; // Month is 0-indexed (6 = July)
     
-    if (!isJuly22 && !bypassDate) {
+    if (!isJuly21 && !bypassDate) {
       return NextResponse.json({ 
-        message: "Cron executed. Today is not July 22nd. No emails sent.",
+        message: "Cron executed. Today is not July 21st. No emails sent.",
         dateChecked: today.toISOString().split("T")[0]
       });
     }
@@ -42,10 +42,10 @@ export async function POST(request: Request) {
     }
 
     // 4. Construct Email Digest
-    const emailSubject = `Happy Birthday Mr. Julius Mattai! 🎂 Birthday Wishes Digest [July 22]`;
+    const emailSubject = `Happy Birthday Mr. Julius Mattai! 🎂 Birthday Wishes Digest [July 21]`;
     const emailBody = `
       <h1>Happy Birthday, Minister Julius Mattai!</h1>
-      <p>Today is July 22nd, and your team and colleagues have compiled a board of floating birthday wishes for you.</p>
+      <p>Today is July 21st, and your team and colleagues have compiled a board of floating birthday wishes for you.</p>
       
       <h2>Birthday Messages Summary (${wishes.length} wishes received):</h2>
       <ul>

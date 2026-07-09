@@ -51,9 +51,9 @@ export default function Home() {
     fetchWishes();
   }, []);
 
-  // Countdown to July 22, 2026
+  // Countdown to July 21, 2026
   useEffect(() => {
-    const target = new Date("2026-07-22T00:00:00").getTime();
+    const target = new Date("2026-07-21T00:00:00").getTime();
 
     const tick = () => {
       const now = Date.now();
@@ -120,7 +120,7 @@ export default function Home() {
       {/* ─── HERO SECTION ─── */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
-          <span className={styles.heroEyebrow}>Birthday Celebration · July 22</span>
+          <span className={styles.heroEyebrow}>Birthday Celebration · July 21</span>
           <h1 className={styles.heroTitle}>
             Julius Daniel<br />Mattai
           </h1>
@@ -209,7 +209,7 @@ export default function Home() {
       {/* ─── FOOTER ─── */}
       <footer className={styles.footer}>
         <span>A tribute to Mr. Julius Daniel Mattai</span>
-        <span className={styles.footerRight}>July 22, 2026</span>
+        <span className={styles.footerRight}>July 21, 2026</span>
       </footer>
     </div>
   );

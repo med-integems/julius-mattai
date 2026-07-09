@@ -235,7 +235,7 @@ export default function FloatingWishes({ wishes }: FloatingWishesProps) {
               </p>
               <div className={styles.statusFooter}>
                 <span className={styles.hologramIndicator} style={{ color: selectedWish.color }}>
-                  ● HOLOGRAM RESOLVED // July 22
+                  ● HOLOGRAM RESOLVED // July 21
                 </span>
               </div>
             </div>
