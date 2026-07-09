@@ -1,0 +1,66 @@
+[
+  {
+    "id": 1,
+    "name": "Sarah Mansaray",
+    "role": "Senior Geologist, NMA",
+    "initials": "SM",
+    "wish": "Happy Birthday, Minister Mattai! Thank you for your visionary leadership in transforming our geological surveys. Wishing you a year of breakthroughs!",
+    "color": "#00f2fe"
+  },
+  {
+    "id": 2,
+    "name": "David Kamara",
+    "role": "Managing Director, INTEGEMS",
+    "initials": "DK",
+    "wish": "To our founder, mentor, and CEO: wishing you a fantastic birthday! Your dedication to environmental research continues to inspire all of us daily.",
+    "color": "#ff007f"
+  },
+  {
+    "id": 3,
+    "name": "Fatmata Sesay",
+    "role": "Policy Advisor, Ministry of Mines",
+    "initials": "FS",
+    "wish": "Wishing a very Happy Birthday to an exceptional leader. Your guidance on the Mines and Minerals Act has paved a new path for Sierra Leone.",
+    "color": "#4facfe"
+  },
+  {
+    "id": 4,
+    "name": "Dr. Joseph Turay",
+    "role": "GIS Specialist",
+    "initials": "JT",
+    "wish": "Happy Birthday, Chief! Hoping your day is as spectacular as a 3D LiDAR scan! Thank you for always pushing the boundaries of GIS.",
+    "color": "#00ffcc"
+  },
+  {
+    "id": 5,
+    "name": "Aminata Kargbo",
+    "role": "Communications Director",
+    "initials": "AK",
+    "wish": "Happy Birthday to a brilliant geoscientist and leader. Your passion for community development shines in everything you do. Enjoy your day, sir!",
+    "color": "#ffc837"
+  },
+  {
+    "id": 6,
+    "name": "Michael Bangura",
+    "role": "Mineral Economist",
+    "initials": "MB",
+    "wish": "Warmest birthday wishes, Minister! Your expertise and leadership keep us moving towards a sustainable and transparent mining future.",
+    "color": "#b100ff"
+  },
+  {
+    "id": 1782996052979,
+    "name": "Mohamed Kamara",
+    "role": "ICT Consultant",
+    "initials": "MK",
+    "wish": "Happy Birthday Julius Mattai",
+    "color": "#c5a880"
+  },
+  {
+    "id": 1783613166120,
+    "name": "Joel Anothony",
+    "role": "ICT Officer",
+    "initials": "JA",
+    "wish": "Happy Birthday sir, we wish you all the best",
+    "color": "#c5a880"
+  }
+]

@@ -1,0 +1,245 @@
+.terminalContainer {
+  background: rgba(8, 10, 18, 0.85);
+  border: 1px solid var(--border-solid);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  backdrop-filter: var(--blur-glass);
+  font-family: var(--font-geist-mono), Courier, monospace;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+body.light-theme .terminalContainer {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.terminalContainer:hover {
+  border-color: var(--accent-cyan);
+  box-shadow: var(--glow-cyan);
+}
+
+.terminalHeader {
+  background: rgba(18, 22, 38, 0.7);
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid var(--border-solid);
+  user-select: none;
+}
+
+body.light-theme .terminalHeader {
+  background: #f1f5f9;
+}
+
+.windowControls {
+  display: flex;
+  gap: 6px;
+}
+
+.controlDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.close { background-color: #ff5f56; }
+.minimize { background-color: #ffbd2e; }
+.maximize { background-color: #27c93f; }
+
+.headerTitle {
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-family: var(--font-header);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+.terminalBody {
+  padding: 16px;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+}
+
+.terminalForm {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputRow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+}
+
+.prompt {
+  color: var(--accent-cyan);
+  font-size: 12px;
+  font-weight: 600;
+}
+
+body.light-theme .prompt {
+  color: var(--accent-blue);
+}
+
+.terminalInput {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 12px;
+  padding: 2px 4px;
+  outline: none;
+  flex: 1;
+  min-width: 120px;
+  transition: border-bottom 0.3s ease;
+}
+
+body.light-theme .terminalInput {
+  border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+.terminalInput:focus {
+  border-bottom: 1px solid var(--accent-cyan);
+}
+
+.textareaRow {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.promptLine {
+  display: flex;
+}
+
+.terminalTextarea {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+  color: var(--text-primary);
+  font-family: inherit;
+  font-size: 12px;
+  padding: 8px;
+  outline: none;
+  min-height: 70px;
+  resize: none;
+  transition: all 0.3s ease;
+}
+
+body.light-theme .terminalTextarea {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.terminalTextarea:focus {
+  border-color: var(--accent-cyan);
+  background: rgba(0, 0, 0, 0.4);
+}
+
+body.light-theme .terminalTextarea:focus {
+  background: rgba(255, 255, 255, 1);
+}
+
+.colorRow {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.colorSelector {
+  display: flex;
+  gap: 8px;
+}
+
+.colorCircle {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.2s ease;
+}
+
+.colorCircle:hover {
+  transform: scale(1.2);
+}
+
+.colorActive {
+  border-color: #ffffff;
+  transform: scale(1.15);
+}
+
+body.light-theme .colorActive {
+  border-color: #1e293b;
+}
+
+.submitButton {
+  margin-top: 6px;
+  background: transparent;
+  border: 1px solid var(--accent-cyan);
+  border-radius: 6px;
+  color: var(--accent-cyan);
+  padding: 8px;
+  font-family: var(--font-header);
+  font-size: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: all 0.2s ease;
+}
+
+.submitButton:hover:not(:disabled) {
+  background: var(--accent-cyan);
+  color: #000000;
+  box-shadow: var(--glow-cyan);
+}
+
+.submitButton:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+/* Logging state styles */
+.logOutput {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11px;
+  line-height: 1.4;
+  height: 100%;
+}
+
+.normalLog {
+  color: var(--text-secondary);
+}
+
+.successLog {
+  color: var(--accent-green);
+  text-shadow: 0 0 4px rgba(0, 255, 204, 0.3);
+}
+
+.errorLog {
+  color: var(--accent-magenta);
+}
+
+.cursor {
+  color: var(--accent-cyan);
+  animation: blink 1s infinite steps(2);
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}

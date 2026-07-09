@@ -1,0 +1,40 @@
+# Root compose for the full LoMEMIS stack (frontend + backend).
+#
+# Usage:
+#   docker compose up -d --build      # build & start both services
+#   docker compose logs -f            # tail rotating logs
+#   docker compose down               # stop & remove
+
+x-logging: &default-logging
+  driver: json-file
+  options:
+    max-size: "10m" # rotate when a log file reaches this size
+    max-file: "5" # keep this many rotated files
+
+services:
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: j-mattai:latest
+    container_name: j-mattai-container
+    restart: unless-stopped
+    environment:
+      - NODE_ENV=production
+      - PORT=4004
+      - HOSTNAME=0.0.0.0
+      - WISHES_DATA_PATH=/app/data/wishes.json
+    ports:
+      - "4004:4004"
+    volumes:
+      - ./data:/app/data
+    healthcheck:
+      test:
+        - "CMD-SHELL"
+        - "node -e \"require('http').get('http://localhost:4004/',r=>process.exit(r.statusCode<500?0:1)).on('error',()=>process.exit(1))\""
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 30s
+    logging: *default-logging

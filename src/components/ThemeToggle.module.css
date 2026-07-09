@@ -1,0 +1,23 @@
+.toggle {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--border-solid);
+  background: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  color: var(--text-primary);
+}
+
+.toggle:hover {
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+}
+
+.icon {
+  font-size: 16px;
+  line-height: 1;
+}
