@@ -413,6 +413,8 @@ body.light-theme .portfolioWatermark {
     order: -1;
     height: auto;
     min-height: 0;
+    /* Full width, flush to the top and side edges of the card */
+    width: calc(100% + 56px);
     margin: -28px -28px 0;
     aspect-ratio: 16 / 10;
   }

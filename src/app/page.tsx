@@ -27,6 +27,8 @@ export default function Home() {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [loading, setLoading] = useState(true);
   const [confettiOn, setConfettiOn] = useState(true);
+  // Only visitors with ?seen=true can view the birthday wishes board and photos
+  const [canView, setCanView] = useState(false);
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -51,6 +53,13 @@ export default function Home() {
       }
     }
     fetchWishes();
+  }, []);
+
+  // Gate the wishes board and photos behind ?seen=true
+  useEffect(() => {
+    setCanView(
+      new URLSearchParams(window.location.search).get("seen") === "true"
+    );
   }, []);
 
   // Countdown to July 21, 2026
@@ -249,14 +258,16 @@ export default function Home() {
                 </div>
               </div>
 
-              {loading ? (
-                <div className={styles.loadingState}>
-                  <Loader2 className="animate-spin" size={28} strokeWidth={1.5} />
-                  <span className={styles.loadingText}>Loading wishes...</span>
-                </div>
-              ) : (
-                <WishesSlideshow wishes={wishes} />
-              )}
+              {/* Wishes board is only visible with ?seen=true */}
+              {canView &&
+                (loading ? (
+                  <div className={styles.loadingState}>
+                    <Loader2 className="animate-spin" size={28} strokeWidth={1.5} />
+                    <span className={styles.loadingText}>Loading wishes...</span>
+                  </div>
+                ) : (
+                  <WishesSlideshow wishes={wishes} />
+                ))}
             </div>
           </ScrollReveal>
           <ScrollReveal delay={200}>
