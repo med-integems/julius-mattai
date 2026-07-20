@@ -3,16 +3,19 @@
 # ---- Dependencies ----
 FROM node:24-alpine AS deps
 WORKDIR /app
-COPY package.json package-lock.json ./
-RUN npm install
+# libc6-compat helps native modules (e.g. sharp) run on Alpine
+RUN apk add --no-cache libc6-compat
+RUN npm install -g pnpm
+COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+RUN pnpm install --frozen-lockfile
 
 # ---- Build (produces .next/standalone) ----
 FROM node:24-alpine AS build
 WORKDIR /app
-
+RUN npm install -g pnpm
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN pnpm run build
 
 # ---- Runtime ----
 FROM node:24-alpine AS prod

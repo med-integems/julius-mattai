@@ -1,3 +1,9 @@
+# Approve native build scripts. `onlyBuiltDependencies` is the standard key
+# honored by pnpm (incl. the Docker/production build); `allowBuilds` is kept
+# for the local toolchain that expects that form.
+onlyBuiltDependencies:
+  - sharp
+  - unrs-resolver
 allowBuilds:
   sharp: true
   unrs-resolver: true
