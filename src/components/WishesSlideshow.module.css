@@ -37,7 +37,7 @@ body.light-theme .watermark {
 .label {
   font-family: var(--font-header);
   font-size: clamp(32px, 5vw, 48px);
-  font-weight: 500;
+  font-weight: 700;
   color: var(--text-primary);
   position: relative;
   z-index: 2;
@@ -161,25 +161,13 @@ body.light-theme .watermark {
 
 .bubble {
   padding: 28px 32px;
-  background: var(--bg-bubble);
-  border-radius: 0 20px 20px 20px;
+  background: var(--bg-card);
+  border: 0.5px solid var(--accent-gold);
+  border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   position: relative;
   margin-left: 48px;
   margin-top: -2px;
-}
-
-/* Smooth curved tail — points up-left toward the avatar */
-.bubble::before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0;
-  width: 20px;
-  height: 20px;
-  background: var(--bg-bubble);
-  clip-path: polygon(0 0, 0% 100%, 100% 100%);
-  border-radius: 0 0 0 4px;
 }
 
 body.light-theme .bubble {
@@ -199,16 +187,16 @@ body.light-theme .bubble {
 }
 
 .quoteText {
-  font-family: var(--font-header);
-  font-size: clamp(18px, 2.2vw, 22px);
-  font-weight: 300;
-  font-style: italic;
-  line-height: 1.5;
-  color: var(--text-bubble);
+  font-family: var(--font-body);
+  font-size: clamp(17px, 2vw, 21px);
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.7;
+  color: var(--text-primary);
   border: none;
   margin: 0;
   padding: 0;
-  letter-spacing: -0.01em;
+  letter-spacing: 0;
 }
 
 .attribution {
@@ -376,9 +364,5 @@ body.light-theme .bubble {
   .bubble {
     border-radius: 16px;
     margin-left: 0;
-  }
-
-  .bubble::before {
-    display: none;
   }
 }

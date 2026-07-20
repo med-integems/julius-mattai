@@ -95,7 +95,7 @@ body {
 /* Typography Utility */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-header);
-  font-weight: 300;
+  font-weight: 600;
   letter-spacing: -0.01em;
   line-height: 1.15;
 }
@@ -129,6 +129,15 @@ body.light-theme .radial-glow {
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(8px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+/* Spinner utility (matches Tailwind's animate-spin) */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
 
 @keyframes fadeOut {

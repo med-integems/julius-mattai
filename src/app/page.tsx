@@ -1,17 +1,18 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import Image from "next/image";
-import styles from "./page.module.css";
 import BackgroundParticles from "@/components/BackgroundParticles";
 import ConfettiCanvas from "@/components/ConfettiCanvas";
-import ThemeToggle from "@/components/ThemeToggle";
-import SynthPlayer from "@/components/SynthPlayer";
-import PortfolioSection from "@/components/PortfolioSection";
-import WishesSlideshow from "@/components/WishesSlideshow";
 import GuestRegistry from "@/components/GuestRegistry";
 import HeroCarousel from "@/components/HeroCarousel";
+import PortfolioSection from "@/components/PortfolioSection";
 import ScrollReveal from "@/components/ScrollReveal";
+import SynthPlayer from "@/components/SynthPlayer";
+import ThemeToggle from "@/components/ThemeToggle";
+import WishesSlideshow from "@/components/WishesSlideshow";
+import { Loader2, PartyPopper, Sparkles } from "lucide-react";
+import Image from "next/image";
+import { useEffect, useState } from "react";
+import styles from "./page.module.css";
 
 interface Wish {
   id: number;
@@ -25,6 +26,7 @@ interface Wish {
 export default function Home() {
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [loading, setLoading] = useState(true);
+  const [confettiOn, setConfettiOn] = useState(true);
   const [countdown, setCountdown] = useState({
     days: 0,
     hours: 0,
@@ -54,6 +56,14 @@ export default function Home() {
   // Countdown to July 21, 2026
   useEffect(() => {
     const target = new Date("2026-07-21T00:00:00").getTime();
+
+    // Dev/preview override: ?birthday=true forces the birthday state
+    const forceBirthday =
+      new URLSearchParams(window.location.search).get("birthday") === "true";
+    if (forceBirthday) {
+      setCountdown({ days: 0, hours: 0, minutes: 0, seconds: 0, isBirthday: true });
+      return;
+    }
 
     const tick = () => {
       const now = Date.now();
@@ -86,7 +96,19 @@ export default function Home() {
     <div className={styles.app}>
       <div className="radial-glow" />
       <BackgroundParticles />
-      <ConfettiCanvas />
+      <ConfettiCanvas continuous={countdown.isBirthday && confettiOn} />
+
+      {/* Confetti stop / resume — shown throughout the birthday */}
+      {countdown.isBirthday && (
+        <button
+          className={styles.confettiToggle}
+          onClick={() => setConfettiOn((v) => !v)}
+          aria-label={confettiOn ? "Stop confetti" : "Start confetti"}
+        >
+          {confettiOn ? <PartyPopper size={16} /> : <Sparkles size={16} />}
+          <span>{confettiOn ? "Stop confetti" : "Start confetti"}</span>
+        </button>
+      )}
 
       {/* ─── NAV BAR ─── */}
       <header className={styles.nav}>
@@ -186,13 +208,52 @@ export default function Home() {
         <PortfolioSection />
       </section>
 
+      {/* ─── BIRTHDAY TITLE ─── */}
+      <ScrollReveal>
+        <section className={styles.birthdaySection}>
+          <span className={styles.birthdayEyebrow}>July 21 · 60th Birthday</span>
+          <h2 className={styles.birthdayTitle}>
+            <span className={styles.birthdayAccent}>Happy Birthday,</span><br />Julius Daniel Mattai
+          </h2>
+          <p className={styles.birthdaySubtitle}>
+            Celebrating six decades of visionary leadership, service, and inspiration.
+          </p>
+        </section>
+      </ScrollReveal>
+
       {/* ─── WISHES & REGISTRY ─── */}
       <section className={styles.wishesSection}>
         <div className={styles.wishesGrid}>
           <ScrollReveal>
             <div className={styles.wishesCol}>
+              {/* Wishes photos */}
+              <div className={styles.wishesPhotos}>
+                <div className={styles.wishesPhoto}>
+                  <Image
+                    src="/images/jm-5.jpeg"
+                    alt="Julius Mattai birthday celebration"
+                    fill
+                    priority
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className={styles.wishesPhotoImg}
+                  />
+                </div>
+                <div className={styles.wishesPhoto}>
+                  <Image
+                    src="/images/jm-6.jpeg"
+                    alt="Julius Mattai birthday celebration"
+                    fill
+                    sizes="(max-width: 768px) 100vw, 50vw"
+                    className={styles.wishesPhotoImg}
+                  />
+                </div>
+              </div>
+
               {loading ? (
-                <p className={styles.loadingText}>Loading wishes...</p>
+                <div className={styles.loadingState}>
+                  <Loader2 className="animate-spin" size={28} strokeWidth={1.5} />
+                  <span className={styles.loadingText}>Loading wishes...</span>
+                </div>
               ) : (
                 <WishesSlideshow wishes={wishes} />
               )}
@@ -208,7 +269,7 @@ export default function Home() {
 
       {/* ─── FOOTER ─── */}
       <footer className={styles.footer}>
-        <span>A tribute to Mr. Julius Daniel Mattai</span>
+        <span>A tribute to the birthday of Mr. Julius Daniel Mattai</span>
         <span className={styles.footerRight}>July 21, 2026</span>
       </footer>
     </div>

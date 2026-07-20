@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import styles from "./GuestRegistry.module.css";
 
@@ -116,7 +117,14 @@ export default function GuestRegistry({ onWishAdded }: GuestRegistryProps) {
             className={styles.submitBtn}
             disabled={!name.trim() || !wish.trim() || isSubmitting}
           >
-            {isSubmitting ? "Sending..." : "Send My Wishes 🎂"}
+            {isSubmitting ? (
+              <span className={styles.submitBtnLoading}>
+                <Loader2 className="animate-spin" size={18} strokeWidth={2} />
+                Sending...
+              </span>
+            ) : (
+              "Send My Wishes 🎂"
+            )}
           </button>
         </form>
       )}
