@@ -353,8 +353,69 @@ body.light-theme .portfolioWatermark {
 
 .registryCol {
   width: 100%;
-  max-width: 760px;
+  max-width: 1240px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: stretch;
+  padding: 56px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-solid);
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.registryForm {
+  min-width: 0;
+}
+
+.registryImage {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  min-height: 420px;
+  margin: -56px 0 -56px -56px;
+  overflow: hidden;
+}
+
+.registryImage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(0, 0, 0, 0.28) 100%
+  );
+  pointer-events: none;
+}
+
+.registryImageImg {
+  object-fit: cover;
+  transition: transform 0.6s ease;
+}
+
+.registryImage:hover .registryImageImg {
+  transform: scale(1.04);
+}
+
+@media (max-width: 900px) {
+  .registryCol {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    max-width: 760px;
+    padding: 28px;
+  }
+
+  .registryImage {
+    order: -1;
+    height: auto;
+    min-height: 0;
+    margin: -28px -28px 0;
+    aspect-ratio: 16 / 10;
+  }
 }
 
 .loadingState {

@@ -230,7 +230,7 @@ export default function Home() {
               <div className={styles.wishesPhotos}>
                 <div className={styles.wishesPhoto}>
                   <Image
-                    src="/images/jm-5.jpeg"
+                    src="/images/jm-and-gents.jpeg"
                     alt="Julius Mattai birthday celebration"
                     fill
                     priority
@@ -240,7 +240,7 @@ export default function Home() {
                 </div>
                 <div className={styles.wishesPhoto}>
                   <Image
-                    src="/images/jm-6.jpeg"
+                    src="/images/jm-and-ladies.jpeg"
                     alt="Julius Mattai birthday celebration"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -261,7 +261,18 @@ export default function Home() {
           </ScrollReveal>
           <ScrollReveal delay={200}>
             <div className={styles.registryCol}>
-              <GuestRegistry onWishAdded={handleWishAdded} />
+              <div className={styles.registryImage}>
+                <Image
+                  src="/images/jm-and-cake.jpeg"
+                  alt="Julius Mattai with his birthday cake"
+                  fill
+                  sizes="(max-width: 900px) 100vw, 45vw"
+                  className={styles.registryImageImg}
+                />
+              </div>
+              <div className={styles.registryForm}>
+                <GuestRegistry onWishAdded={handleWishAdded} />
+              </div>
             </div>
           </ScrollReveal>
         </div>
